@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Home</title>
+    <style>
+        table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        }
+
+    </style>
+
+</head>
+<body>
+     <div style="float:right;">
+        <button onclick="triggerLogout()"> Logout </button>
+      </div>
+
+
+
+    <div>
+        <table>
+            <thead>
+                <th>student_id</th>
+                <th>book_id</th>
+            </thead>
+            <tbody>
+            <select id="books">
+                {% for book in books %}
+                <option value="{{book.id}}">book.id</option>
+                {% endfor %}
+            </select>
+            </tbody>
+    </div>
+
+
+
+</body>
+    <script>
+        function triggerLogout() {
+            window.location.href = "/logout"
+        }
+    </script>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style>
+        table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        }
+
+    </style>
+
+</head>
+<body>
+     <div style="float:right;">
+        <button onclick="triggerLogout()"> Logout </button>
+      </div>
+    <h1> Hi {{current_user.name}} </h1>
+
+    <button id="add-book"> <a href="/add/book">Add Book +</a> </button>
+     <button id="student-list"> <a href="/stu">Student Home </a> </button>
+
+    <div>
+        <table>
+            <thead>
+                <th>id</th>
+                <th>title</th>
+                <th>author</th>
+                <th>total_copies</th>
+                <th>available_copies</th>
+                <th>created_by</th>
+                <th>bought_on</th>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                <tr>
+                    <td> <a href="/book/{{book.id}}/edit">{{book.id}} </a></td>
+                    <td> <a href="/book/{{book.id}}/edit">{{book.title}} </a></td>
+                    <td>{{book.author}}</td>
+                    <td>{{book.total_copies}}</td>
+                    <th>{{book.available_copies}}</th>
+                    <td>{{book.created_by}}</td>
+                    <td>{{book.bought_on.strftime("%Y-%d-%m")}}</td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div><br>
+
+     <button id="add-student"> <a href="/add/student">Add Student +</a> </button><br>
+
+
+     <div>
+        <table>
+            <thead>
+                <th>id</th>
+                <th>name</th>
+                <th>email</th>
+                <th>reg_no</th>
+            </thead>
+            <tbody>
+                {% for student in student %}
+                <tr>
+                    <td>{{student.id}}</td>
+                    <td>{{student.name}}</td>
+                    <td>{{student.email}}</td>
+                    <td>{{student.reg_no}}</td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div> <br>
+
+
+    <div>
+        <table>
+            <thead>
+
+                <th>id</th>
+                <th>stundent_id</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <select id="books">
+                        {% for book in books %}
+                        <option value="{{book.id}}">{{book.id}}</option>
+                        {% endfor %}
+                    </select>
+                </tr>
+    </div>
+
+
+
+
+
+</body>
+    <script>
+        function triggerLogout() {
+            window.location.href = "/logout"
+        }
+    </script>
+</html>

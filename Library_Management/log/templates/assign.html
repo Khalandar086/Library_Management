@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assign Book</title>
+</head>
+<body>
+
+    <form action="/assign/book" method="POST" >
+         <label for="student_id">student_id: </label>
+        <select id="student_id">
+             {% for student in student %}
+             <option value="{{student.id}}">{{student.id}}</option>
+            {% endfor %}
+
+        </select>
+
+      <label for="Books">book_id: </label>
+        <select id="Books">
+             {% for book in books %}
+             <option value="{{book.id}}">{{book.id}}</option>
+            {% endfor %}
+
+        </select>
+
+
+      <button type="submit">Submit</button>
+
+
+
+
+  </form>
+    {% if error %}
+        <p style="color:red;">Failed to create Book record! retry again after sometime</p>
+    {% endif %}
+
+
+</body>
+</html>

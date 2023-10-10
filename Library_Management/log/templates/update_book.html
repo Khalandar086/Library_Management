@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Book</title>
+</head>
+<body>
+
+  <form action="/update/book" method="POST" >
+
+      <input id="title" name="title" type="text" placeholder="Enter Book Title..." value="book.title" required>
+      <input id="author" name="author" type="text" placeholder="Enter Author Name..." value="book.author" required>
+      <input id="total_copies" name="total_copies" type="number" placeholder="Enter Total_copies..." value="book.total_copies" required >
+
+      <button type="submit">Submit</button>
+
+  </form>
+    {% if error %}
+        <p style="color:red;">Failed to create Book record! retry again after sometime</p>
+    {% endif %}
+
+
+</body>
+</html>
